@@ -1,5 +1,6 @@
 package id.my.nyuciin;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,11 +9,13 @@ import androidx.appcompat.widget.AppCompatImageView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -35,6 +38,28 @@ public class Home extends AppCompatActivity {
         cta_topup = findViewById(R.id.ctaTopup);
         cta_transfer = findViewById(R.id.ctaTransfer);
         cta_cashout = findViewById(R.id.ctaCashout);
+
+        //assign bottom navigation
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home:
+                        return true;
+                    case R.id.market:
+                        return true;
+                    case R.id.history:
+                        startActivity(new Intent(getApplicationContext(), History.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.profile:
+                        return true;
+                }
+                return false;
+            }
+        });
 
         //assign fab
         pick = findViewById(R.id.pick);

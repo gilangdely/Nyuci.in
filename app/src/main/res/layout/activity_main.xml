@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Platform Nyuci.in"
+                android:text="Sudah cuci pakaian belum?"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:fontFamily="@font/poppins_medium"/>
